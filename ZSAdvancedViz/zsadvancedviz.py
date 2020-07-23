@@ -3,8 +3,7 @@ import plotly.graph_objects as _go
 import pandas as _pd
 import webcolors as _wc
 import re
-from zscolorscale import colors_scale
-
+from ZSAdvancedViz.zscolorscale import colors_scale
 
 class zsadvancedviz:
 
