@@ -1,1 +1,1 @@
-from ZSAdvancedViz.zsadvancedviz import ZS_bar
+from ZSAdvancedViz.zsadvancedviz import zsgraph_objects
