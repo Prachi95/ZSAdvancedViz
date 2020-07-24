@@ -88,7 +88,8 @@ class zsadvancedviz:
         # plotly_template = _pio.templates["ZS_theme"]
         # plotly_template.layout
 
-    def line_chart(data,
+    def line_chart(self,
+                   data,
                    x_data_col: str,
                    y_data_col: str,
                    chart_attr: dict = {}):
@@ -132,11 +133,12 @@ class zsadvancedviz:
                          layout=_go.Layout(title=chart_attr.get("chart_title", "Line Chart"),
                                            xaxis={'title': chart_attr.get("x_axis_title", "")},
                                            yaxis={'title': chart_attr.get("y_axis_title", "")},
-                                           template="ZS_theme"))
+                                           template=self.theme))
 
         return fig
 
-    def multiline_chart(data,
+    def multiline_chart(self,
+                        data,
                         x_data_col: str,
                         y_data_col: list,
                         chart_attr: dict = {},
@@ -218,11 +220,12 @@ class zsadvancedviz:
                          layout=_go.Layout(title=chart_attr.get("chart_title", "MultiLine Chart"),
                                            xaxis={'title': chart_attr.get("x_axis_title", "")},
                                            yaxis={'title': chart_attr.get("y_axis_title", "")},
-                                           template="ZS_theme"))
+                                           template=self.theme))
 
         return fig
 
-    def bar_chart(data,
+    def bar_chart(self,
+                  data,
                   x_data_col: str,
                   y_data_col: str,
                   chart_attr: dict = {}):
@@ -267,11 +270,12 @@ class zsadvancedviz:
                          layout=_go.Layout(title=chart_attr.get("chart_title", "Bar Chart"),
                                            xaxis={'title': chart_attr.get("x_axis_title", "")},
                                            yaxis={'title': chart_attr.get("y_axis_title", "")},
-                                           template="ZS_theme"))
+                                           template=self.theme))
 
         return fig
 
-    def multibar_chart(data,
+    def multibar_chart(self,
+                       data,
                        x_data_col: str,
                        y_data_col: list,
                        chart_attr: dict = {},
@@ -358,11 +362,12 @@ class zsadvancedviz:
                                            title=chart_attr.get("chart_title", "Multi Bar Chart"),
                                            xaxis={'title': chart_attr.get("x_axis_title", "")},
                                            yaxis={'title': chart_attr.get("y_axis_title", "")},
-                                           template="ZS_theme"))
+                                           template=self.theme))
 
         return fig
 
-    def pie_chart(data,
+    def pie_chart(self,
+                  data,
                   label_col: str,
                   value_col: str,
                   chart_attr: dict = {}):
@@ -406,11 +411,12 @@ class zsadvancedviz:
                                       # "label", "text", "value", "percent" joined with a "+" OR "none".
                                       ),
                          layout=_go.Layout(title=chart_attr.get("chart_title", "Pie Chart"),
-                                           template="ZS_theme"))
+                                           template=self.theme))
 
         return fig
 
-    def donut_chart(data,
+    def donut_chart(self,
+                    data,
                     label_col: str,
                     value_col: str,
                     hole_value: float = 0.3,
@@ -461,11 +467,12 @@ class zsadvancedviz:
                                       hole=hole_value
                                       ),
                          layout=_go.Layout(title=chart_attr.get("chart_title", "Donut Chart"),
-                                           template="ZS_theme"))
+                                           template=self.theme))
 
         return fig
 
-    def sankey_chart(data,
+    def sankey_chart(self,
+                     data,
                      source_column: str,
                      target_column: str,
                      value_column: str,
@@ -521,8 +528,6 @@ class zsadvancedviz:
                 "The type of decimal_points is " + str(type(decimal_points)) + ", where as expected type is int")
         if not isinstance(chart_attr, dict):
             raise ValueError("The type of chart_attr is " + str(type(chart_attr)) + ", where as expected type is dict")
-
-        import re
 
         label_data = []
         # appends the empty label
@@ -590,11 +595,12 @@ class zsadvancedviz:
         )])
 
         fig.update_layout(title_text=chart_attr.get("chart_title", "Sankey Chart"),
-                          template='ZS_theme')
+                          template=self.theme)
 
         return fig
 
-    def bitmap(data,
+    def bitmap(self,
+               data,
                x_axis_order_list: list,
                x_axis_column: str,
                y_axis_column: str,
@@ -865,10 +871,7 @@ class zsadvancedviz:
                                         0]) + "<br>Intensity: 1-High")
 
                             elif list(y_axis_detail_param_data[color_intensity_column_name])[0] == 2:
-                                medium_intensity_color = list(config_data_of_value[color_column_name])[0].replace(" 1)",
-                                                                                                                  (
-                                                                                                                          " " + str(
-                                                                                                                      0.7) + ")"))
+                                medium_intensity_color = list(config_data_of_value[color_column_name])[0].replace(" 1)",( " " + str(0.7) + ")"))
                                 colors.append(medium_intensity_color)
                                 # text list to show on the hover
                                 text_list.append("value: " + str(
@@ -911,7 +914,7 @@ class zsadvancedviz:
                                      text=text_list
                                      ))
         fig.update_layout(title=chart_attr.get("chart_title", "Bit Map"),
-                          template='ZS_theme')
+                          template=self.theme)
 
         return fig
 
