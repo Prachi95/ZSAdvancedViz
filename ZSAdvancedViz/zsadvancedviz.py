@@ -891,7 +891,7 @@ class zsadvancedviz:
                           layout = _go.Layout(title= chart_attr.get("chart_title","Bit Map"),
                                               xaxis = {"title" : {"text":chart_attr.get("x_axis_title","")}},
                                               yaxis = {"title" : {"text":chart_attr.get("y_axis_title","")}},
-                                              template = 'ZS_theme',
+                                              template = self.theme,
                                               legend = {'x' : 1.02, #  -2 and 3    v - 1.02, h - 0
                                                         'xanchor' : "left", # "auto" | "left" | "center" | "right"
                                                         'y' : 1, #  -2 and 3    v - 1, h - -0.1
@@ -988,7 +988,8 @@ class zsadvancedviz:
  
         return fig
 
-    def dexter(data, 
+    def dexter(self,
+               data, 
                x_axis_order_list:list, 
                x_axis_column:str, 
                y_axis_column:str, 
@@ -1287,10 +1288,11 @@ class zsadvancedviz:
         fig.update_layout(title= chart_attr.get("chart_title","Dexter chart"),
                           xaxis = {"title" : chart_attr.get("x_axis_title","")},
                           yaxis = {"title" : chart_attr.get("y_axis_title","")},
-                          template = 'ZS_theme')
+                          template = self.theme)
         return fig
 
-    def heatmap(data,  
+    def heatmap(self,
+                data,  
                x_axis_column:str, 
                y_axis_column:str, 
                values_data_column:str,
@@ -1390,7 +1392,7 @@ class zsadvancedviz:
         fig.update_layout(title= chart_attr.get("chart_title","Heatmap"),
                           xaxis = {"title" : chart_attr.get("x_axis_title","")},
                           yaxis = {"title" : chart_attr.get("y_axis_title","")},
-                          template = 'ZS_theme')
+                          template = self.theme)
         return fig
     
 
