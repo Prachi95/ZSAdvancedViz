@@ -1061,9 +1061,6 @@ class zsadvancedviz:
         if not isinstance(values_data_column, str):
             raise ValueError("The type of values_data_column is " + str(
                 type(values_data_column)) + ", where as expected type is str")
-        if not isinstance(intensity_column, str):
-            raise ValueError(
-                "The type of intensity_column is " + str(type(intensity_column)) + ", where as expected type is str")
         if not isinstance(color_column, str):
             raise ValueError(
                 "The type of color_column is " + str(type(color_column)) + ", where as expected type is str")
@@ -1085,7 +1082,6 @@ class zsadvancedviz:
 
         x_axis_data_column_name = x_axis_column
         values_data_column_name = values_data_column
-        color_intensity_column_name = intensity_column
 
         values_data_config_column_name = values_data_config_column
         color_column_name = color_column
