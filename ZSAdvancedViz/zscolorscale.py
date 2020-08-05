@@ -37,3 +37,19 @@ def colors_scale(labels: list = []):
                     colors_scale.append(zs_theme_colors[color].replace(" 1)", (" " + str(
                         round(1 - (0.5 / (int(len(labels) / len(zs_theme_colors)) - 1)) * (num + 1), 3)) + ")")))
             return colors_scale[:len(labels)]
+        
+def discrete_colorscale(bvals, colors):
+    """
+    bvals - list of values bounding intervals/ranges of interest
+    colors - list of rgb or hex colorcodes for values in [bvals[k], bvals[k+1]],0<=k < len(bvals)-1
+    returns the plotly  discrete colorscale
+    """
+    if len(bvals) > len(colors):
+        raise ValueError('len(boundary values) should be less than or equal to  len(colors)')
+    bvals = sorted(bvals)     
+    nvals = [(v-bvals[0])/(bvals[-1]-bvals[0]) for v in bvals]  #normalized values
+
+    dcolorscale = [] #discrete colorscale
+    for k in range(len(bvals)):
+        dcolorscale.extend([[nvals[k], colors[k]]])
+    return dcolorscale 
