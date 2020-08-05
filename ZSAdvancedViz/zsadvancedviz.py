@@ -1129,7 +1129,7 @@ class zsadvancedviz:
             for hex_color in hex_colors_list:
                 # checks for the valid hex color code
                 if re.match(r'^[#][0-9A-Za-z]{6}$',str(hex_color)):
-                    rgb_colors_list.append(str(webcolors.hex_to_rgb(str(hex_color))).replace("IntegerRGB","rgba").replace("red=","").replace("green=","").replace("blue=","").replace(")",", 1)"))
+                    rgb_colors_list.append(str(_wc.hex_to_rgb(str(hex_color))).replace("IntegerRGB","rgba").replace("red=","").replace("green=","").replace("blue=","").replace(")",", 1)"))
                 else:
                     raise ValueError("Entered wrong Hex code: "+str(hex_color)+ " in the data. Enter the correct hex code")
 
