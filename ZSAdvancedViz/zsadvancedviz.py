@@ -1096,7 +1096,7 @@ class zsadvancedviz:
         #else do grp by on treatement and assign grp numbers and create color scale on the basis of that
         if len(config_data) != 0:
             # checks for the data type
-            if type(config_data) is not pandas.core.frame.DataFrame:
+            if type(config_data) is not _pd.core.frame.DataFrame:
                 raise ValueError("The type of dataframe is "+str(type(config_data))+". Where as expected pandas dataframe")
             # checks for the existing of column in config data frame
             else:
@@ -1134,7 +1134,7 @@ class zsadvancedviz:
                     raise ValueError("Entered wrong Hex code: "+str(hex_color)+ " in the data. Enter the correct hex code")
 
             # appends the rgba column to the config data frame
-            updated_rgba_color_df = pandas.DataFrame({color_column_name: rgb_colors_list})
+            updated_rgba_color_df = _pd.DataFrame({color_column_name: rgb_colors_list})
             pandas_dataframe_1[color_column_name] = updated_rgba_color_df
 
              # group no initiulization
@@ -1147,7 +1147,7 @@ class zsadvancedviz:
                 pre_grp_nums.append(data['treatment_grp_no'].values[0])
 
             # updates config_data and converts to pandas data frame
-            pandas_dataframe_1['treatment_grp_no'] = pandas.DataFrame({grp_column_name: pre_grp_nums})
+            pandas_dataframe_1['treatment_grp_no'] = _pd.DataFrame({grp_column_name: pre_grp_nums})
             pandas_dataframe_1 = pandas_dataframe_1.sort_values(by=[grp_column_name])
 
             bvals = list(pandas_dataframe_1[grp_column_name])
@@ -1189,7 +1189,7 @@ class zsadvancedviz:
 
             # updates config_data and converts to pandas data frame
             config_data_dict.update({grp_column_name:pre_grp_nums, color_column_name:pre_colors})
-            pandas_dataframe_1 = pandas.DataFrame(config_data_dict)        
+            pandas_dataframe_1 = _pd.DataFrame(config_data_dict)        
             pandas_dataframe_1 = pandas_dataframe_1.sort_values(by=[grp_column_name])
 
             bvals = list(pandas_dataframe_1[grp_column_name])
